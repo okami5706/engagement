@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>காவியா & சஞ்சய் | நிச்சயதார்த்தம்</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{
+    min-height:110vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+    font-family:'Cormorant Garamond', serif;
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+}
+
+audio{display:none;}
+
+.first-page{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    z-index:100;
+}
+
+.first-page p{
+    font-size:clamp(22px,5vw,30px);
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    margin-bottom:20px;
+    color:#5e239d;
+}
+
+.first-page button{
+    padding:12px 28px;
+    border:none;
+    border-radius:25px;
+    background:#5e239d;
+    color:white;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.invitation-page{
+    min-height:100vh;
+    background:radial-gradient(circle at center,#3b0066,#14001f);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.invitation-border{
+    border:3px solid gold;
+    border-radius:30px;
+    box-shadow:0 0 45px rgba(255,215,0,0.8);
+    width:100%;
+    max-width:1000px;
+    padding:20px;
+    display:flex;
+}
+
+.card{
+    background:white;
+    border-radius:25px;
+    overflow-x:hidden;
+    width:100%;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    text-align:center;
+    color:#3b0066;
+}
+
+.logo img{
+    width:15px;
+    height:15px;
+    object-fit:cover;
+    border-radius:50%;
+    opacity:0.8;
+    box-shadow:0 0 6px gold;
+    margin-bottom:8px;
+}
+
+h3{
+    font-family:'Cinzel', serif;
+    font-size:20px;
+    color:#b8860b;
+    margin-bottom:6px;
+}
+
+.card p{
+    font-size:16px;
+    line-height:1.4;
+    margin-bottom:6px;
+}
+
+.names{
+    font-family:'Cinzel Decorative', serif;
+    font-size:clamp(30px,5vw,40px);
+    font-weight:700;
+    margin:16px 0 6px 0;
+    background:linear-gradient(90deg,#5e239d,#ffd700,#5e239d);
+    background-size:200% auto;
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip:text;
+    animation:shine 4s linear infinite;
+    line-height:1.15;
+}
+
+@keyframes shine{
+    0%{background-position:0%;}
+    100%{background-position:200%;}
+}
+
+.names small{
+    display:block;
+    font-size:clamp(13px,3vw,15px);
+    margin-top:4px;
+    line-height:1.25;
+    color:#3b0066;
+}
+
+.names small span{
+    display:block;
+    margin-top:0px;
+}
+
+.love-symbol img{
+    width:60px;
+    margin:14px 0;
+}
+
+.date{
+    font-family:'Cinzel', serif;
+    font-size:17px;
+    color:#b8860b;
+    margin-top:6px;
+}
+
+.location{
+    font-size:14px;
+    margin-top:4px;
+}
+
+.footer{
+    margin-top:6px;
+    font-size:14px;
+}
+
+.buttons{
+    margin-top:14px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+}
+
+.buttons a{
+    padding:8px 18px;
+    border-radius:25px;
+    font-size:14px;
+    text-decoration:none;
+    color:white;
+    font-family:'Cinzel', serif;
+}
+
+.map-btn{background:#b8860b;}
+.whatsapp-btn{background:#25D366;}
+
+.countdown{
+    margin-top:18px;
+    font-size:18px;
+    font-weight:700;
+    font-family:'Cinzel', serif;
+    color:#b8860b;
+}
+
+canvas{display:block;}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="music.mp3" loop></audio>
+<canvas id="particles"></canvas>
+
+<div class="first-page" id="firstPage">
+    <p>இரண்டு ஆன்மாக்கள். ஒரு நித்திய வாக்குறுதி.</p>
+    <button onclick="revealInvitation()">அழைப்பிதழை திறக்க</button>
+</div>
+
+<div class="invitation-page">
+    <div class="invitation-border">
+        <div class="card">
+
+            <div class="logo">
+                <img src="logo.png" alt="Sacred Symbol">
+            </div>
+
+            <h3>இறைவனின் திருநாமத்தில்</h3>
+
+            <p><em>இரு இதயங்கள், ஒரு வாக்குறுதி, என்றும் தொடரும் வாழ்க்கைப் பயணம்.</em></p>
+
+            <p>
+                மிகுந்த மகிழ்ச்சியும் ஆனந்தத்துடனும், நாங்கள் உங்களை
+                <strong>நிச்சயதார்த்த விழாவில்</strong>
+                கலந்து கொள்ள அன்புடன் அழைக்கிறோம்
+            </p>
+
+            <div class="names">
+                காவியா ஆனந்த்
+                <small>
+                    டா/ஒ டாக்டர் பி. ஆனந்த் &
+                    <span>திருமதி அபர்ணா ஆனந்த்</span>
+                </small>
+            </div>
+
+            <div class="love-symbol">
+                <img src="love.png" alt="Love Symbol">
+            </div>
+
+            <div class="names">
+                சஞ்சய் தயாளன்
+                <small>எஸ்/ஒ திரு தயாளன் & திருமதி லதா</small>
+            </div>
+
+            <div class="date">
+                ஏப்ரல் 30, 2026 – வியாழக்கிழமை <br>
+                மாலை 6 மணி முதல்
+            </div>
+
+            <div class="location">
+                ப்ரியா மஹால், உத்திரமேரூர்
+            </div>
+
+            <div class="footer">
+                குடும்பத்தினரும் நண்பர்களும் ஒன்றுகூடி அன்பையும் உறுதியையும்
+                என்றும் நிலைக்கும் உறவையும் கொண்டாடும் இந்த இனிய தருணத்தில்
+                தங்கள் வருகையை அன்புடன் எதிர்நோக்குகிறோம்
+            </div>
+
+            <div class="buttons">
+                <a class="map-btn" target="_blank"
+                   href="https://maps.app.goo.gl/i2AwdwUCDFbnVZWR9">
+                   இடத்தை காண்க
+                </a>
+
+                <a class="whatsapp-btn" target="_blank"
+                   href="https://wa.me/919150237616?text=I%20will%20be%20attending%20the%20Engagement">
+                   வாட்ஸ்அப்பில் பதில் அளிக்கவும்
+                </a>
+            </div>
+
+            <div class="countdown" id="countdown"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+function revealInvitation(){
+    document.getElementById("firstPage").style.display="none";
+    const music=document.getElementById("bgMusic");
+    music.volume=0;
+    music.play();
+    let fade=setInterval(()=>{
+        if(music.volume<0.6){ music.volume+=0.05; }
+        else clearInterval(fade);
+    },200);
+}
+
+const target=new Date("April 30, 2026 18:00:00").getTime();
+const countdown=document.getElementById("countdown");
+
+setInterval(()=>{
+    const now=new Date().getTime();
+    const diff=target-now;
+
+    if(diff<=0){
+        countdown.innerHTML="இன்று அந்த இனிய நாள்!";
+        return;
+    }
+
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const m=Math.floor((diff%(1000*60*60))/(1000*60));
+    const s=Math.floor((diff%(1000*60))/1000);
+
+    countdown.innerHTML=`${d} நாட்கள் ${h} மணி ${m} நிமிடங்கள் ${s} விநாடிகள்`;
+},1000);
+
+</script>
+
+</body>
+</html>
