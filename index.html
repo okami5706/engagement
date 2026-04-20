@@ -20,6 +20,8 @@ html,body{
     min-height:110vh;
     overflow-x:hidden;
     overflow-y:auto;
+    display:flex;
+    justify-content:center;
     font-family:'Cormorant Garamond', serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -70,7 +72,7 @@ audio{display:none;}
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:20px;
+    padding:10px;
 }
 
 .invitation-border{
@@ -81,6 +83,7 @@ audio{display:none;}
     max-width:1000px;
     padding:20px;
     display:flex;
+    overflow:hidden;
 }
 
 .card{
@@ -88,6 +91,8 @@ audio{display:none;}
     border-radius:25px;
     overflow-x:hidden;
     width:100%;
+    max-width:100%;
+    box-sizing:border-box;  
     padding:25px;
     display:flex;
     flex-direction:column;
